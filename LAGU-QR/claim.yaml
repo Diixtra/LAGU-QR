@@ -1,0 +1,10 @@
+apiVersion: platform.diixtra.com/v1alpha1
+kind: ImageHosting
+metadata:
+  name: lagu-wedding
+  labels:
+    app.kubernetes.io/name: lagu-wedding
+    app.kubernetes.io/managed-by: flux
+spec:
+  region: eu-west-2
+  objectKey: programme.jpeg

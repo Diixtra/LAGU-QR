@@ -9,3 +9,4 @@ metadata:
 spec:
   region: eu-west-2
   objectKey: programme.jpeg
+  uploadPassword: ${password}

@@ -35,3 +35,5 @@ See [SECURITY.md](SECURITY.md) for our security policy and how to report vulnera
 This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
 <!-- For private repos, replace with: -->
 <!-- All rights reserved. -->
+
+> Engineering docs for this product live in the Knox vault: `40 Areas/Engineering/Products/QRBuddy/`.

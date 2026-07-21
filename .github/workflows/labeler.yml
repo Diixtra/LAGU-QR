@@ -9,8 +9,23 @@ permissions:
   pull-requests: write
 
 jobs:
+  # Broker-routed placement keeps this job off GitHub-hosted runners, which fail at
+  # job start when the org's Actions spending limit is exhausted; fail-open falls
+  # back to Blacksmith, also off GitHub billing.
+  choose:
+    permissions:
+      id-token: write
+    uses: Diixtra/diixtra-forge/.github/workflows/choose-runner.yml@main
+    with:
+      target: standard-ci
+      size: small
+      docker: false
+      mode: live
+      fallback: blacksmith-2vcpu-ubuntu-2404
+
   label:
-    runs-on: ubuntu-latest
+    needs: choose
+    runs-on: ${{ fromJSON(needs.choose.outputs.runs_on) }}
     steps:
       - uses: actions/labeler@v7.0.0
         with:

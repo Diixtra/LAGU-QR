@@ -14,6 +14,7 @@ jobs:
   # back to Blacksmith, also off GitHub billing.
   choose:
     permissions:
+      # OIDC token exchange with the runner broker, required by the choose-runner reusable workflow
       id-token: write
     uses: Diixtra/diixtra-forge/.github/workflows/choose-runner.yml@main
     with:

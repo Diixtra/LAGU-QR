@@ -11,8 +11,13 @@ permissions: read-all
 jobs:
   analysis:
     name: Scorecard analysis
-    runs-on: ubuntu-latest
+    # ossf/scorecard-action is a Docker container action, so under local runners
+    # it needs ci-docker (dind), never ci-light (no daemon). Diixtra/diixtra-forge#4493.
+    runs-on: ${{ vars.CI_LOCAL_RUNNERS == 'true' && 'ci-docker' || 'ubuntu-latest' }}
     permissions:
+      # A job-level permissions block REPLACES the workflow-level read-all, so
+      # without this checkout has no repo scope ("Repository not found").
+      contents: read
       security-events: write
       id-token: write
     steps:
